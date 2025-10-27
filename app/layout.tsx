@@ -1,6 +1,9 @@
+// app/layout.tsx
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/*<nav className="bg-gray-800 text-white p-4">*/}
+        {/*  <ul className="flex space-x-6">*/}
+        {/*    <li><Link href="/">Главная</Link></li>*/}
+        {/*    <li><Link href="/auth/login">Вход</Link></li>*/}
+        {/*    <li><Link href="/auth/register">Регистрация</Link></li>*/}
+        {/*  </ul>*/}
+        {/*</nav>*/}
+
+
         {children}
       </body>
     </html>
