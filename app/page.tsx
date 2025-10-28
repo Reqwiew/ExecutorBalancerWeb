@@ -49,14 +49,14 @@ export default function Main() {
                     <div className="flex justify-start items-center">
                         <div className="flex justify-center ">
 
-                            <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-3"
+                            <Link className="bg-transparent flex text-black  justify-center items-center gap-5 px-6 py-3"
                                   href="/admin">
                                 Admin panel
                                 <Image src={arrow} alt="arrow"/></Link>
                         </div>
                         <div className="flex justify-center ">
 
-                            <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-4"
+                            <Link className="bg-transparent flex justify-center text-black items-center gap-5 px-6 py-4"
                                   href="/addField">
                                 Add field
                                 <Image src={arrow} alt="arrow"/></Link>
@@ -66,8 +66,8 @@ export default function Main() {
 
             </div>
 
-            <div className="w-full flex  justify-center relative h-[10000] z-10">
-                <div className="w-5/6 lg:w-4/6">
+            <div className="w-full flex  justify-center relative  z-10">
+                <div className="w-full ">
                     <RequestsDashboard/>
                     <UserDashboard></UserDashboard>
                 </div>

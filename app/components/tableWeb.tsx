@@ -16,7 +16,7 @@ const RealTimeRequestsTable: React.FC = () => {
     const ws = new WebSocket("wss://ais.twc1.net/ws/dispatched/");
 
     ws.onopen = () => {
-      console.log(" WebSocket connected");
+      console.log("WebSocket connected");
     };
 
     ws.onmessage = (event) => {
@@ -32,13 +32,12 @@ const RealTimeRequestsTable: React.FC = () => {
     };
 
     ws.onclose = () => {
-      console.log("⚠WebSocket disconnected");
+      console.log("WebSocket disconnected");
     };
 
     ws.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
-
 
     return () => {
       ws.close();
@@ -46,14 +45,14 @@ const RealTimeRequestsTable: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 w-full">
-      <h2 className="text-xl font-semibold mb-4 text-[#FF7A00]">
-        Запросы в реальном времени
-      </h2>
+      <div className="bg-white rounded-lg shadow-md p-4 w-full max-h-[400px] overflow-y-auto">
+        <h2 className="text-xl font-semibold mb-4 text-[#FF7A00]">
+          Запросы в реальном времени
+        </h2>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+        <div className="overflow-x-auto w-full h-[500px]">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50 top-0 z-10">
             <tr>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 ID запроса
@@ -68,42 +67,42 @@ const RealTimeRequestsTable: React.FC = () => {
                 Статус
               </th>
             </tr>
-          </thead>
+            </thead>
 
-          <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-gray-200">
             {requests.length > 0 ? (
-              requests.map((req, index) => (
-                <tr key={req.request_id || index} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {req.request_id}
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                    @{req.user}
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(req.timestamp).toLocaleString()}
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm">
+                requests.map((req, index) => (
+                    <tr key={req.request_id || index} className="hover:bg-gray-50">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {req.request_id}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                        @{req.user}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                        {new Date(req.timestamp).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 border border-green-300">
                       Распределено
                     </span>
+                      </td>
+                    </tr>
+                ))
+            ) : (
+                <tr>
+                  <td
+                      colSpan={4}
+                      className="px-4 py-6 text-center text-gray-500 text-sm"
+                  >
+                    Нет данных...
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan={4}
-                  className="px-4 py-6 text-center text-gray-500 text-sm"
-                >
-                  Нет данных...
-                </td>
-              </tr>
             )}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
   );
 };
 

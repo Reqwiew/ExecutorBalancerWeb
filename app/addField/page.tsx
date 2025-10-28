@@ -95,7 +95,7 @@ export default function AddFieldPage() {
     return (
         <div className="relative min-h-screen bg-[#EDEEF0] overflow-hidden select-none">
 
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0  z-0">
                 <Image src={topleft} alt="Top Left" width={500} height={500}
                        className="absolute top-0 left-0 object-contain pointer-events-none select-none"/>
                 <Image src={botright} alt="Bottom Right" width={500} height={500}
@@ -107,7 +107,7 @@ export default function AddFieldPage() {
                 <div className="bg-[#FF5A00] h-18 w-full text-xl text-white flex justify-center items-center">
                     <p>InsurTech-платформа для логистики</p>
                 </div>
-                <div className="w-full flex justify-between px-10">
+                <div className="w-full flex justify-between text-black  px-10">
                     <Link href="/">
                         <Image src={logo} alt="InsurTech logo" width={160} height={60} priority className="p-6"/>
                     </Link>
@@ -133,8 +133,7 @@ export default function AddFieldPage() {
                     <div className="flex flex-col items-center w-full">
                         <div className="bg-white w-5/6 rounded-2xl flex justify-between p-10 flex  gap-6">
                             <div>
-                                <label className="block text-gray-700 text-lg font-medium mb-2">Название
-                                    переменной</label>
+                                <label className="block text-gray-700 text-lg font-medium mb-2">Создание параметра</label>
                                 <input
                                     type="text"
                                     value={variableName}
@@ -173,7 +172,7 @@ export default function AddFieldPage() {
                     </div>
 
                     <div className="bg-white w-5/6 rounded-2xl shadow-lg p-10">
-                        <h2 className="text-xl font-semibold mb-4">Существующие переменные</h2>
+                        <h2 className="text-xl font-semibold mb-4 text-[#FF5A00]">Параметры</h2>
                         {loading ? (
                             <p>Загрузка...</p>
                         ) : (
@@ -183,7 +182,7 @@ export default function AddFieldPage() {
                                         key={v.id}
                                         className="grid grid-cols-4 items-center gap-4 border-b border-gray-200 py-2"
                                     >
-                                        <span className="font-medium truncate col-span-2">{v.name}</span>
+                                        <span className="font-medium text-gray-400 truncate col-span-2">{v.name}</span>
                                         <span className="text-gray-500 whitespace-nowrap">{v.type_of}</span>
                                         <button type="button" className="ml-auto" onClick={() => handleDeleteVariable(v.id)}>
                                             <Image src={delet} alt="delete" width={24} height={24}/>
