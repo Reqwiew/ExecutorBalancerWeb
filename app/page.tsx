@@ -7,6 +7,7 @@ import botright from "./assets/circles_bottom.svg";
 import arrow from "./assets/arrow.svg"
 import Link from "next/link";
 import React from "react";
+import UserDashboard from "@/app/components/dashboard2";
 
 
 export default function Main() {
@@ -65,9 +66,10 @@ export default function Main() {
 
             </div>
 
-            <div className="w-full flex  justify-center relative z-10">
+            <div className="w-full flex  justify-center relative h-[10000] z-10">
                 <div className="w-5/6 lg:w-4/6">
                     <RequestsDashboard/>
+                    <UserDashboard></UserDashboard>
                 </div>
             </div>
         </div>

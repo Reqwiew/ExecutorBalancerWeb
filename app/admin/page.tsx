@@ -8,6 +8,7 @@ import RequestsDashboard from "@/app/components/dashboard1";
 import WebSocketLog from "@/app/components/logs";
 import UsersList from "@/app/components/userList";
 import React from "react";
+import RealTimeRequestsTable from "@/app/components/tableWeb";
 
 export default function adminPage() {
     return (
@@ -67,23 +68,12 @@ export default function adminPage() {
                 </div>
 
                 <div className="w-full flex  justify-center relative z-10">
-                    <div className=" w-5/6 flex flex-col flex justify-between gap 10 lg:w-3/6 flex-row ">
+                    <div className=" w-5/6 flex flex-col flex justify-between gap 10 lg:w-3/6 flex-col ">
+
+                        <UsersList/>
+                    <RealTimeRequestsTable />
 
 
-                        <WebSocketLog
-                            url="wss://ais.twc1.net/ws/dispatched/"
-                            title="Распределение"
-                        />
-                        <WebSocketLog
-                            url="wss://ais.twc1.net/ws/newRequest/"
-                            title="Новые заявки"
-                        />
-                    </div>
-
-                </div>
-                <div className="w-full flex relative justify-center z-10">
-                    <div className="lg:w-3/6 ">
-                        <UsersList></UsersList>
                     </div>
                 </div>
 
