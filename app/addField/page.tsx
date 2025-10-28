@@ -139,7 +139,7 @@ export default function AddFieldPage() {
                                     value={variableName}
                                     onChange={(e) => setVariableName(e.target.value)}
                                     placeholder="Введите имя переменной"
-                                    className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#FF5A00]"
+                                    className="w-full border border-gray-300 rounded-xl text-gray-500 p-3 focus:outline-none focus:ring-2 focus:ring-[#FF5A00]"
                                 />
                             </div>
 
@@ -148,7 +148,7 @@ export default function AddFieldPage() {
                                 <select
                                     value={dataType}
                                     onChange={(e) => setDataType(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#FF5A00]"
+                                    className="w-full border border-gray-300 rounded-xl text-gray-500 p-3 focus:outline-none focus:ring-2 focus:ring-[#FF5A00]"
                                 >
                                     <option value="string">string</option>
                                     <option value="integer">integer</option>
@@ -160,7 +160,7 @@ export default function AddFieldPage() {
 
 
                         </div>
-                        <div className="flex justify-start w-5/6 p-4">
+                        <div className="flex justify-start  w-5/6 p-4">
                             <button
                                 onClick={handleAddVariable}
                                 className="flex justify-start gap-3 bg-transparent text-black font-medium py-3 rounded-xl "

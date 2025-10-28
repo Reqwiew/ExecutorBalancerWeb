@@ -132,7 +132,7 @@ const RequestsDashboard: React.FC = () => {
     if (!data || loading) return <p>Загрузка...</p>;
 
     return (
-        <div className="w-full lg:p-6 rounded-2xl">
+        <div className="w-full lg:p-6 rounded-2xl ">
 
             <div className="grid grid-cols-2 gap-2 justify-center mb-6 lg:grid-cols-4">
                 <StatBox title="Всего заявок" value={data.stats.totalRequests}/>

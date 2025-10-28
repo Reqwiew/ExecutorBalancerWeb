@@ -68,7 +68,9 @@ export default function Main() {
 
             <div className="w-full flex  justify-center relative  z-10">
                 <div className="w-full ">
-                    <RequestsDashboard/>
+                    <div className="flex justify-center  h-[800px]">
+                        <RequestsDashboard/>
+                    </div>
                     <UserDashboard></UserDashboard>
                 </div>
             </div>
