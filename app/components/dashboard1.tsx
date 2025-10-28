@@ -122,7 +122,7 @@ const downloadExcel = () => {
           <div className="grid grid-cols-2 gap-2 justify-center mb-6 lg:grid-cols-4">
               <StatBox title="Всего заявок" value={data.stats.totalRequests}/>
               <StatBox title="Заявок обработано" value={data.stats.processedRequests}/>
-              <StatBox title="Принято" value={data.stats.acceptedRequests}/>
+              <StatBox title="Медиана" value={data.stats.medianBetweenMaxMin}/>
               <StatBox title="Исполнителей" value={data.stats.performers}/>
           </div>
 

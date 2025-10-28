@@ -10,16 +10,22 @@ import logo from "@/app/assets/logo.svg";
 import arrow from "@/app/assets/arrow.svg";
 import plus from "@/app/assets/plus.svg";
 import delet from "@/app/assets/delete.svg"
-
+type Variable = {
+  id: string;
+  name: string;
+  type_of: string;
+};
+interface ParameterId{
+    id: string
+}
 export default function AddFieldPage() {
     const [variableName, setVariableName] = useState("");
     const [dataType, setDataType] = useState("string");
-    const [variables, setVariables] = useState([]);
+    const [variables, setVariables] = useState<Variable[]>([]);
     const [loading, setLoading] = useState(true);
 
     const API_URL = "https://ais.twc1.net/api/dataTypes/";
 
-    // Загрузка существующих переменных с API
     useEffect(() => {
         const fetchVariables = async () => {
             try {
@@ -69,7 +75,7 @@ export default function AddFieldPage() {
     };
 
 
-    const handleDeleteVariable = async (id) => {
+    const handleDeleteVariable = async (id: string) => {
         try {
             const response = await fetch(`${API_URL}${id}/`, {
                 method: "DELETE",

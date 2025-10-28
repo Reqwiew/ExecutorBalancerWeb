@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import topleft from "@/app/assets/circles_top.svg";
 import botright from "@/app/assets/circles_bottom.svg";

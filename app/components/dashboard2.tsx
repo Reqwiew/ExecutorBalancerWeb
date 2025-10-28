@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
@@ -11,7 +13,7 @@ const UserDashboard = () => {
     ],
     options: {
       chart: {
-        type: "bar",
+        type: "bar" as const,
         height: 500,
       },
       xaxis: {
@@ -27,7 +29,7 @@ const UserDashboard = () => {
       },
       tooltip: {
         y: {
-          formatter: (val) => val,
+          formatter: (val: string) => val,
         },
       },
       plotOptions: {
@@ -43,8 +45,8 @@ const UserDashboard = () => {
     fetch("https://ais.twc1.net/api/users/dispatched/")
       .then((res) => res.json())
       .then((data) => {
-        const usernames = data.map((user) => user.username);
-        const requests = data.map((user) => user.request_count);
+        const usernames = data.map((user: any) => user.username);
+        const requests = data.map((user: any) => user.request_count);
 
         setChartData((prev) => ({
           ...prev,
@@ -68,6 +70,7 @@ const UserDashboard = () => {
 
   return (
     <div>
+      // @ts-ignore
       <Chart options={chartData.options} series={chartData.series} type="bar" height={500} />
     </div>
   );
