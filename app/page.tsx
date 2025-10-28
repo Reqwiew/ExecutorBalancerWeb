@@ -11,21 +11,21 @@ import React from "react";
 
 export default function Main() {
     return (
-        <div className="relative min-h-screen bg-white overflow-hidden select-none" >
+        <div className="relative min-h-screen  bg-[#EDEEF0]  overflow-hidden select-none">
             <div className="absolute inset-0 z-1">
                 <Image
                     src={topleft}
                     alt="Top Left"
                     width={500}
                     height={500}
-                    className="absolute top-0 left-0 object-contain pointer-events-none select-none opacity-30"
+                    className="absolute top-0 left-0 object-contain pointer-events-none select-none "
                 />
                 <Image
                     src={botright}
                     alt="Bottom Right"
                     width={500}
                     height={500}
-                    className="absolute bottom-0 right-0 object-contain pointer-events-none select-none opacity-30"
+                    className="absolute bottom-0 right-0 object-contain pointer-events-none select-none"
                 />
             </div>
 
@@ -35,19 +35,31 @@ export default function Main() {
                     <p>InsurTech-платформа для логистики</p>
                 </div>
                 <div className="w-full flex justify-between px-10">
-                    <Image
-                        src={logo}
-                        alt="InsurTech logo"
-                        width={160}
-                        height={60}
-                        priority
-                        className="p-6"
-                    />
-                    <div className="flex justify-center ">
+                    <Link href="/" >
+                        <Image
+                            src={logo}
+                            alt="InsurTech logo"
+                            width={160}
+                            height={60}
+                            priority
+                            className="p-6"
+                        />
+                    </Link>
+                    <div className="flex justify-start items-center">
+                        <div className="flex justify-center ">
 
-                        <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-4" href="/admin">
-                            Admin panel
-                            <Image src={arrow} alt="arrow"/></Link>
+                            <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-3"
+                                  href="/admin">
+                                Admin panel
+                                <Image src={arrow} alt="arrow"/></Link>
+                        </div>
+                        <div className="flex justify-center ">
+
+                            <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-4"
+                                  href="/addField">
+                                Add field
+                                <Image src={arrow} alt="arrow"/></Link>
+                        </div>
                     </div>
                 </div>
 

@@ -30,15 +30,23 @@ const RequestsDashboard = () => {
     fetchStats(period);
   }, [period]);
 
-  if (!data || loading) {
-    return (
-        <div className="flex justify-center items-center h-64">
-          <div
-              className="w-12 h-12 border-4 border-[#FF7A00] border-t-transparent border-solid rounded-full animate-spin"></div>
-        </div>
-    );
-  }
 
+ useEffect(() => {
+
+    fetchStats(period);
+
+
+    const intervalId = setInterval(() => {
+      fetchStats(period);
+    }, 10000);
+
+
+    return () => clearInterval(intervalId);
+  }, [period]);
+
+if (!data) {
+  return <div className="p-6 text-center text-gray-500"></div>;
+}
   const chartInfo = data.chart;
 
   const chartConfig: any = {
@@ -156,7 +164,7 @@ const downloadExcel = () => {
           <h4 className="text-orange-500 font-semibold mb-2 text-xl">Нагруженность исполнителей</h4>
           <p className="text-gray-500 text-sm mb-4">
             Погрешность{" "}
-            <span className="text-orange-500 font-semibold">{data.workload.error}%</span>
+            <span className="text-orange-500 font-semibold">{data.workload.error}</span>
           </p>
 
           <div className="flex-1 flex items-center justify-center">

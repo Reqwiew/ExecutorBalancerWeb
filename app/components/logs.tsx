@@ -52,7 +52,7 @@ export default function WebSocketLog({url, title}) {
                 {logs.map((log, index) => (
                     <div
                         key={index}
-                        className="p-4 rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition"
+                        className="p-4 rounded-xl border border-gray-200 bg-white hover:shadow-md transition"
                     >
                         <p className="text-gray-900 font-medium">
                             {log.id || log.request_id || "—"}
