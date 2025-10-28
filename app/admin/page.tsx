@@ -1,0 +1,81 @@
+import Image from "next/image";
+import topleft from "@/app/assets/circles_top.svg";
+import botright from "@/app/assets/circles_bottom.svg";
+import logo from "@/app/assets/logo.svg";
+import Link from "next/link";
+import arrow from "@/app/assets/arrow.svg";
+import RequestsDashboard from "@/app/components/dashboard1";
+import WebSocketLog from "@/app/components/logs";
+import UsersList from "@/app/components/userList";
+import React from "react";
+
+export default function adminPage() {
+    return (
+        <>
+            <div className="relative min-h-screen  bg-[#EDEEF0] overflow-hidden select-none">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src={topleft}
+                        alt="Top Left"
+                        width={500}
+                        height={500}
+                        className="absolute top-0 left-0 object-contain pointer-events-none select-none "
+                    />
+                    <Image
+                        src={botright}
+                        alt="Bottom Right"
+                        width={500}
+                        height={500}
+                        className="absolute bottom-0 right-0 object-contain pointer-events-none select-none"
+                    />
+                </div>
+
+
+                <div className="w-full h-36 flex flex-col bg-[#EDEEF0]    items-center relative z-10">
+                    <div className="bg-[#FF5A00] h-18 w-full text-xl text-white flex justify-center items-center">
+                        <p>InsurTech-платформа для логистики</p>
+                    </div>
+                    <div className="w-full flex justify-between px-10">
+                        <Image
+                            src={logo}
+                            alt="InsurTech logo"
+                            width={160}
+                            height={60}
+                            priority
+                            className="p-6"
+                        />
+                        <div className="flex justify-center ">
+
+                            <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-4" href="/">
+                                Dashboards
+                                <Image src={arrow} alt="arrow"/></Link>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="w-full flex  justify-center relative z-10">
+                    <div className=" w-5/6 flex flex-col flex justify-between gap 10 lg:w-3/6 flex-row ">
+
+
+                        <WebSocketLog
+                            url="wss://ais.twc1.net/ws/dispatched/"
+                            title="Распределение"
+                        />
+                        <WebSocketLog
+                            url="wss://ais.twc1.net/ws/newRequest/"
+                            title="Новые заявки"
+                        />
+                    </div>
+
+                </div>
+                <div className="w-full flex relative justify-center z-10">
+                    <div className="lg:w-3/6 ">
+                        <UsersList></UsersList>
+                    </div>
+                </div>
+
+            </div>
+        </>
+    )
+}

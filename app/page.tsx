@@ -4,10 +4,14 @@ import RequestsDashboard from "@/app/components/dashboard1";
 import logo from "./assets/logo.svg";
 import topleft from "./assets/circles_top.svg";
 import botright from "./assets/circles_bottom.svg";
+import arrow from "./assets/arrow.svg"
+import Link from "next/link";
+import React from "react";
+
 
 export default function Main() {
     return (
-        <div className="relative min-h-screen bg-white overflow-hidden">
+        <div className="relative min-h-screen bg-white overflow-hidden select-none" >
             <div className="absolute inset-0 z-1">
                 <Image
                     src={topleft}
@@ -30,7 +34,7 @@ export default function Main() {
                 <div className="bg-[#FF5A00] h-18 w-full text-xl text-white flex justify-center items-center">
                     <p>InsurTech-платформа для логистики</p>
                 </div>
-                <div className="w-full flex justify-left bg-white">
+                <div className="w-full flex justify-between px-10">
                     <Image
                         src={logo}
                         alt="InsurTech logo"
@@ -39,11 +43,18 @@ export default function Main() {
                         priority
                         className="p-6"
                     />
+                    <div className="flex justify-center ">
+
+                        <Link className="bg-transparent flex justify-center items-center gap-5 px-6 py-4" href="/admin">
+                            Admin panel
+                            <Image src={arrow} alt="arrow"/></Link>
+                    </div>
                 </div>
+
             </div>
 
-            <div className="w-full flex justify-center relative z-10">
-                <div className="w-4/6">
+            <div className="w-full flex  justify-center relative z-10">
+                <div className="w-5/6 lg:w-4/6">
                     <RequestsDashboard/>
                 </div>
             </div>
