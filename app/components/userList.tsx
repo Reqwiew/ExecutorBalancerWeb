@@ -82,7 +82,7 @@ export default function UsersList() {
                 </div>
               </div>
 
-              {/* Дропдаун с params */}
+
               {openUserId === user.id && (
                 <div className="px-6 pb-4 text-sm text-gray-700 border-t border-gray-200 bg-gray-50 rounded-b-lg">
                   <div className="grid grid-cols-2 gap-2 mt-3">
