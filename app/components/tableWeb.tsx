@@ -16,31 +16,30 @@ const RealTimeRequestsTable: React.FC = () => {
     const ws = new WebSocket("wss://ais.twc1.net/ws/dispatched/");
 
     ws.onopen = () => {
-      console.log("✅ WebSocket connected");
+      console.log(" WebSocket connected");
     };
 
     ws.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
 
-        // Проверяем тип события
         if (data.type === "request_dispatched") {
           setRequests((prev) => [data, ...prev]);
         }
       } catch (error) {
-        console.error("❌ Error parsing WebSocket message:", error);
+        console.error("Error parsing WebSocket message:", error);
       }
     };
 
     ws.onclose = () => {
-      console.log("⚠️ WebSocket disconnected");
+      console.log("⚠WebSocket disconnected");
     };
 
     ws.onerror = (error) => {
-      console.error("💥 WebSocket error:", error);
+      console.error("WebSocket error:", error);
     };
 
-    // Очистка при размонтировании
+
     return () => {
       ws.close();
     };
@@ -48,7 +47,7 @@ const RealTimeRequestsTable: React.FC = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 w-full">
-      <h2 className="text-xl font-semibold mb-4">
+      <h2 className="text-xl font-semibold mb-4 text-[#FF7A00]">
         Запросы в реальном времени
       </h2>
 
