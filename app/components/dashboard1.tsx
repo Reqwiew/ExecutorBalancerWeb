@@ -75,6 +75,38 @@ const RequestsDashboard = () => {
     grid: { borderColor: "rgba(0,0,0,0.05)" },
   };
 
+
+const getPeriodDates = (period: "week" | "month") => {
+  const today = new Date();
+  let start = new Date(today);
+  let end = new Date(today);
+
+  if (period === "week") {
+    const day = today.getDay();
+    const diff = day === 0 ? 6 : day - 1;
+    start.setDate(today.getDate() - diff);
+    start.setHours(0, 0, 0, 0);
+    end.setHours(23, 59, 59, 999);
+  } else if (period === "month") {
+    start = new Date(today.getFullYear(), today.getMonth(), 1);
+    end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    start.setHours(0, 0, 0, 0);
+    end.setHours(23, 59, 59, 999);
+  }
+
+  const formatDate = (date: Date) => date.toISOString().split('T')[0];
+
+  return {
+    start_date: formatDate(start),
+    end_date: formatDate(end)
+  };
+};
+
+const downloadExcel = () => {
+  const { start_date, end_date } = getPeriodDates(period);
+  const url = `https://ais.twc1.net/export/logs?start_date=${start_date}&end_date=${end_date}`;
+  window.open(url, '_blank');
+};
   return (
     <div className="w-full lg:p-6 rounded-2xl">
       <div className="grid grid-cols-2 gap-2 justify-center mb-6 lg:grid-cols-4">
@@ -114,7 +146,7 @@ const RequestsDashboard = () => {
 
           <Chart options={chartConfig} series={chartConfig.series} type="area" />
           <div className="flex justify-center mt-6">
-            <button className="bg-orange-500 text-white px-10 py-2 rounded-full font-medium text-sm hover:bg-orange-600 transition lg:px-48">
+            <button className="bg-orange-500 text-white px-10 py-2 rounded-full font-medium text-sm hover:bg-orange-600 transition lg:px-48" onClick={downloadExcel}>
               Скачать отчет
             </button>
           </div>
